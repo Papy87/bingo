@@ -6,14 +6,28 @@ import SpinBallsButton from './Tiket/SpinBallsButton'
 import './App.css';
 
 class App extends Component {
-  state = {
-    ticketNumbers: [],
-    ticketArray: [],
-    lottoNumbers: [],
-    numberIndex: null,
-    switchBackgroundColor: true,
-    showDeleteButton: false,
-  };
+  constructor(){
+    super()
+   this. state = {
+      ticketNumbers: [],
+      ticketArray: [],
+      lottoNumbers: [],
+      numberIndex: null,
+      switchBackgroundColor: true,
+      showDeleteButton: false,
+      matchCounterStatus: false,
+      matchCounter: 0
+    };
+  }
+
+  // componentDidUpdate(prevState){
+  //   if(this.state.lottoNumbers.length!==prevState.lottoNumbers ){
+  //     console.log(this.state)
+  //     console.log(prevState)
+
+  //   }
+  // }
+  
 
   collectTicketNumbers = (event) => {
     const addingNumber = parseInt(event.target.textContent)
@@ -54,32 +68,75 @@ class App extends Component {
     })
   };
 
-  lottoBallNumbers = () => {
+  // lottoBallNumbers = () => {
 
-    const spinBalls = () => {
-      let randomNumber = Math.floor(Math.random() * 30) + 1;
-      if (
-        this.state.lottoNumbers.indexOf(randomNumber) === -1
-      ) {
-        this.setState({ lottoNumbers: [...this.state.lottoNumbers, randomNumber] })
+  //   const spinBalls = () => {
+  //     let randomNumber = Math.floor(Math.random() * 30) + 1;
+  //     if (
+  //       this.state.lottoNumbers.indexOf(randomNumber) === -1
+  //     ) {
+  //       this.setState({ lottoNumbers: [...this.state.lottoNumbers, randomNumber] })
+  //     }
+  //   };
+  //   let startSpining=setInterval(spinBalls, 1000);
+  //   let lotoNum = this.state.lottoNumbers.length;
+  //   let stopSpinning = () => {
+  //     clearInterval(startSpining)
+  //   };
+  //   if (lotoNum <= 12) {
+  //     spinBalls()
+  //   } else {
+  //     stopSpinning()
+  //   }
+  // };
+
+  ranodmLottoNumbers = () => {
+    const lottoNumbers = [...this.state.lottoNumbers]
+    const ticketArray = [...this.state.ticketArray]
+    const chosenOne = [];
+    let randomNumber = null;
+    let result=0;
+
+    for (let i = 1; i <= 10; i++) {
+      randomNumber = Math.floor(Math.random() * 10) + 1;
+      if (chosenOne.indexOf(randomNumber) === -1) {
+        chosenOne.push(randomNumber)
+        this.setState({
+          lottoNumbers: chosenOne
+        })
       }
-    };
-    let startSpining=setInterval(spinBalls, 1000);
-    let lotoNum = this.state.lottoNumbers.length;
-    let stopSpinning = () => {
-      clearInterval(startSpining)
-    };
-    if (lotoNum <= 12) {
-      spinBalls()
-    } else {
-      stopSpinning()
     }
+    ticketArray.map((element) => {
+      element.map((el) => {
+        if(chosenOne.includes(el)){
+          result++
+          this.setState({
+            matchCounter:result
+          })
+          console.log("IMA BROJ "+ el)
+         
+        }else{
+          result=0;
+          console.log('NEMA BROJ' + el)
+        }  
+      })
+    })
   };
 
 
 
+  startLotto = () => {
+    this.ranodmLottoNumbers()
+
+  };
+
+
+
+
   render() {
-    console.log(this.state.lottoNumbers)
+    console.log(`Loto brojevi: ${this.state.lottoNumbers}`)
+    // console.log(this.state.ticketArray)
+    console.log(this.state.matchCounter)
     console.log(this.state.lottoNumbers.length)
     // console.log(this.state.ticketNumbers)
     let myNumbers = null;
@@ -101,8 +158,8 @@ class App extends Component {
       allTickets = (<AllTickets numbers={this.state.ticketArray} />)
     };
 
-    if (this.state.ticketArray.length === 1) {
-      spinBallsButton = (<SpinBallsButton spin={this.lottoBallNumbers} />
+    if (this.state.ticketArray.length > 1) {
+      spinBallsButton = (<SpinBallsButton spin={this.startLotto} />
 
       )
 
@@ -110,7 +167,7 @@ class App extends Component {
 
 
     return (
-      <div className="App">
+      <div className="App" key={Math.random()}>
         <h1>Dobar dan okusajte vasu srecu
         </h1>
         <TicketList click={this.collectTicketNumbers} switchBackground={this.state.switchBackgroundColor} />
