@@ -1,52 +1,91 @@
-
-
-.tiket{
+.tiket {
     width: 350px;
     height: 450px;
     border: 1px solid black;
     background: #00b3e3;
 }
 
-.numbers{
+.numbers {
     background: white;
 }
-.ticket_number{
+
+.ticket_number {
     width: 50px;
     height: 50px;
     border: 2px solid salmon;
-    background:white;
-    color:black;
-    border-radius:50%;
-    margin:  auto ;
+    background: white;
+    color: black;
+    border-radius: 50%;
+    margin: auto;
     display: inline-block;
 }
-.my_ticket_number{
+
+.my_ticket_number {
     width: 50px;
     height: 50px;
     border: 2px solid salmon;
-    background:white;
-    color:black;
-    border-radius:50%;
-    margin:  auto ;
+    background: white;
+    color: black;
+    border-radius: 50%;
+    margin: auto;
     display: inline-block;
 }
-.grey{
+
+.my_ticket_list {
+    border: 2px solid black;
+    width: 50%;
+    margin: 5px;
+}
+
+.my_ticket_list_green {
+    border: 2px solid green;
+    margin: 5px;
+}
+.my_ticket_list_red{
+    border: 2px solid red;
+    margin: 5px;
+
+}
+
+.span_message {
+    display: none;
+}
+
+.span_message_winner {
+    display: inline;
+    color: green;
+}
+
+.span_message_loser {
+    display: inline;
+    color: red;
+}
+
+.grey {
     width: 50px;
     height: 50px;
     border: 2px solid black;
-    background:grey;
-    color:white;
-    border-radius:50%;
+    background: grey;
+    color: white;
+    border-radius: 50%;
     margin: 0 auto;
     display: inline-block;
 }
 
-.my_number_list{
+/* .my_number_list {
     border: 1px solid black;
     display: inline-block;
     margin: 5% 0 0 5%;
-}
-.delete_my_number_button{
+} */
+
+.delete_my_number_button {
     display: none;
-    
+}
+
+.show_delte_my_number_button {
+    display: inline;
+    cursor: pointer;
+    color: red;
+    border-radius: 50%;
+    background:white;
 }

@@ -1,45 +1,18 @@
 import React from 'react'
-import Tiket from './Tiket.css'
+import './Tiket.css'
+import MySingleNumber from './MySingleNumber'
 
-const MyNumbers=(props)=>{
+const MyNumbers = ({ showButton, numbers, singleNumber, deleteNumber, buttonStatus }) => {
 
-    const style={
-        display:'inline',
-        cursor: 'pointer'
-        
-    };
-
-    const styleTwo={
-        display:'none'
-    };
-    
-
-    return(
-        
-            
-        
+    return (
         <div className='my_number_list'>
-            {
-                
-            }
-            <h2>Moji brojevi</h2>
-
-            {props.numbers.map((element)=>{
-
-                return (
-                    <>
-                    <div className='my_ticket_numbers_list'>
-                    <div value ={element}className="my_ticket_number" onClick={props.showButton}>{element}</div>
+            <h4>Odabrani Brojevi</h4>
+            {numbers.map((element, i) => <MySingleNumber key={i} number={element} singleNumber={singleNumber} deleteNumber={deleteNumber} buttonStatus={buttonStatus} showButton={showButton} />)}
+            <div className='message_div'>
+                        <span className='message'>Ako zelite da obrisete broj kliknite na broj</span>
                     </div>
-                    <div className="delete_my_number_div">
-                        <button value={element} className='delete_my_number_button ' style={props.buttonStatus ? style:styleTwo } onClick={props.deleteNumber} >X</button>
-                    </div>
-</>                )
-
-            })}
-            
         </div>
     )
-}
+};
 
 export default MyNumbers
