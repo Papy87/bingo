@@ -29,14 +29,14 @@ class App extends Component {
     collectTicketNumbers = (event) => {
         const addingNumber = parseInt(event.target.textContent)
         const ticketNumbers = [...this.state.ticketNumbers]
-        if(this.state.ticketArray.length<=4){
+        if (this.state.ticketArray.length <= 4) {
             if (ticketNumbers.length <= 4 && ticketNumbers.indexOf(addingNumber) === -1) {
-            this.setState({
-                ticketNumbers: [...ticketNumbers, addingNumber],
-                switchBackgroundColor: !this.state.switchBackgroundColor,
-            })
+                this.setState({
+                    ticketNumbers: [...ticketNumbers, addingNumber],
+                    switchBackgroundColor: !this.state.switchBackgroundColor,
+                })
+            }
         }
-        }  
     };
 
     showDeleteButton = (event) => {
@@ -50,10 +50,11 @@ class App extends Component {
         let ticketNumbers = [...this.state.ticketNumbers]
         let indexNumber = parseInt(event.target.value);
         const fliteredTicketNumbers = ticketNumbers.filter((element) => element !== indexNumber)
-        this.setState({ ticketNumbers: fliteredTicketNumbers,
+        this.setState({
+            ticketNumbers: fliteredTicketNumbers,
             showDeleteButton: !this.state.showDeleteButton
 
-         });
+        });
     };
 
     collectTicket = () => {
@@ -82,11 +83,14 @@ class App extends Component {
     };
 
     startLotto = () => {
-        const intervalId = this.ranodmLottoNumbers()
-        this.setState({
-            intervalId,
-            isNumberGeneratingFinished: false
-        });
+        if (this.state.lottoNumbers.length === 0) {
+            const intervalId = this.ranodmLottoNumbers()
+            this.setState({
+                intervalId,
+                isNumberGeneratingFinished: false
+            });
+        }
+
     };
 
     resetGame = () => {
@@ -118,7 +122,7 @@ class App extends Component {
     }
 
     render() {
-        const { ticketNumbers, showDeleteButton, singleNumber, ticketArray, lottoNumbers, isNumberGeneratingFinished } = this.state;   
+        const { ticketNumbers, showDeleteButton, singleNumber, ticketArray, lottoNumbers, isNumberGeneratingFinished } = this.state;
         return (
             <div className="App"
                 key={Math.random()}>
@@ -130,7 +134,7 @@ class App extends Component {
 
                 <div className='section_two' >
                     <AllLottoNumbers lottoNumbers={lottoNumbers} />
-                
+
                 </div>
 
                 <div className='section_three' > {
@@ -145,7 +149,7 @@ class App extends Component {
                 } </div>
 
                 <div className='section_four'> {ticketNumbers.length && ticketNumbers.length <= 5 ?
-                    <div className='ticket_button'> < button className='add_ticket_button'onClick={this.collectTicket} > Dodaj Tiket </button> </div > : null
+                    <div className='ticket_button'> < button className='add_ticket_button' onClick={this.collectTicket} > Dodaj Tiket </button> </div > : null
                 }
                     {ticketArray.length && ticketArray.length === 5 && lottoNumbers.length < 12
                         ?
