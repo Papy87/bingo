@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import TicketList from './Tiket/Tiket'
-import MyNumbers from './Tiket/MyNumber'
-import AllTickets from './Tiket/AllTickets'
-import SpinBallsButton from './Tiket/SpinBallsButton'
-import AllLottoNumbers from './Tiket/AllLotoNumbers';
-import ResetButton from './Tiket/ResetButton'
+import TicketList from './Component/Ticket/Tiket'
+import MyNumbers from './Component/MyNumber/MyNumber'
+import AllTickets from './Component/AllTickets/AllTickets'
+import SpinBallsButton from './Component/Buttons/SpinBallsButton'
+import AllLottoNumbers from './Component/AllLotoNumbers/AllLotoNumbers';
+import ResetButton from './Component/Buttons/ResetButton'
 
 import './App.css';
 

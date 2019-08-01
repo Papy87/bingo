@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { listOfNumbers } from '../constants'
+import { listOfNumbers } from '../../constants'
 
 import './Tiket.css'
 

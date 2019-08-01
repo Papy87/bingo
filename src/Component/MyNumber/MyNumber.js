@@ -1,6 +1,6 @@
 import React from 'react'
-import './Tiket.css'
-import MySingleNumber from './MySingleNumber'
+import '../Ticket/Tiket.css'
+import MySingleNumber from '../MySingleNumber/MySingleNumber'
 
 const MyNumbers = ({ showButton, numbers, singleNumber, deleteNumber, buttonStatus }) => {
 
