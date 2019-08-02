@@ -1,0 +1,198 @@
+.tiket {
+    width: 350px;
+    height: 485px;
+}
+
+.numbers {
+    background: white;
+    width: 91%;
+    height: 57%;
+    margin: 18px auto;
+    border-radius: 6%;
+    box-shadow: 8px 8px brown;
+}
+.ticket_info{
+    color: brown;
+    font-size: 15px;
+}
+
+.ticket_number {
+    width: 40px;
+    height: 40px;
+    border: 3px solid darkkhaki;;
+    background: white;
+    color: black;
+    border-radius: 50%;
+    margin: 3px;
+    padding: 5px;
+    display: inline-block;
+    cursor: pointer;
+    font-weight: bold;
+}
+.ticket_title{
+    font-style: italic;
+    color: white;
+}
+
+.my_ticket_number {
+    width: 40px;
+    height: 40px;
+    border: 2px solid darkkhaki;
+    background: brown;
+    font-weight: bold;
+    color: white;
+    border-radius: 50%;
+    padding: 6px;
+    margin: auto;
+    display: inline-block;
+    cursor: pointer;
+}
+.my_ticket_numbers {
+    
+    width: 40px;
+    height: 40px;
+    border: 2px solid darkkhaki;
+    background: brown;
+    font-weight: bold;
+    color: white;
+    border-radius: 50%;
+    padding: 6px;
+    display: inline-block;
+    cursor: pointer;
+}
+.all_tickets {
+    display: flex;
+    background: beige;
+    border-radius: 5%;
+    flex-direction: column;
+    box-shadow: 8px 8px brown;
+  }
+  
+
+
+.all_tickets_title{
+    font-style: italic;
+    color: darkkhaki;
+}
+
+.my_ticket_list {
+    border-bottom: 1px solid darkkhaki;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0;
+    border-left: none;
+    border-right: none;
+    border-radius: 5px;
+    margin-bottom: 5px;
+  }
+  
+.my_ticket_list_green {
+    border: 2px solid green;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.my_number_list h5{
+    color: white;
+    font-style: italic;
+}
+
+.span_message {
+    display: none;
+}
+
+.span_message_winner {
+    display: inline;
+    font-weight: bold;
+    font-style: italic;
+    color: green;
+}
+
+.span_message_loser {
+    display: inline;
+    font-weight: bold;
+    font-style: italic;
+    color: red;
+}
+
+.grey {
+    width: 40px;
+    height: 40px;
+    border: 2px solid darkkhaki;;
+    background: burlywood;
+    color: white;
+    border-radius: 50%;
+    margin: 3px;
+    padding: 5px;
+    display: inline-block;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.delete_my_number_button {
+    display: none;
+}
+
+.show_delte_my_number_button {
+    display: inline;
+    border: brown;
+    cursor: pointer;
+    color: brown;
+    border-radius: 50%;
+    background: beige;
+    font-size: 10px;
+    width: 15px;
+    height: 15px;
+}
+.tiket footer {
+    margin-top: 25px;
+    font-style: italic;
+    color: white;
+    font-size: 20px;
+}
+.all_lotto_numbers{
+    background: white;
+    border-radius: 13px;
+    box-shadow: 8px 8px brown;
+}
+.all_lotto_numbers h4{
+    color:darkkhaki;
+    font-style: italic;
+    font-weight: bold;
+}
+
+
+.add_ticket_button {
+    color: white;
+    background:brown;
+    font-style: italic;
+    margin-top: 250%;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
+  }
+  .spin_balls_button {
+    color: white;
+    background: brown;
+    font-style: italic;
+    margin-top: 250%;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
+  }
+  .reset_button {
+    color: white;
+    background:brown;
+    margin-top:250%;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+  }
+  .message {
+    color:brown;
+    font-style: italic;
+    font-size: 11px;
+  }

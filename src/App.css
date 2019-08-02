@@ -1,9 +1,71 @@
-.App {
+* {
+  padding: 3%;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 100%;
+}
+.title {
   text-align: center;
-  margin: 0 auto;
+ font-style: italic;
+ color:darkkhaki;
 }
 
+#root{
+  border:1px solid gold;
+  background: beige;
+  box-shadow: 8px 8px darkkhaki; 
+}
 
+.App {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  margin: 0 auto;
+  margin: 0 auto;
+  background: beige;
+  box-shadow: 8px 8px darkkhaki;
+  width: 90%;
+  height: 100%;
+  padding: 10px;
+}
+
+.section_two {
+  width: 100%;
+  background: darkkhaki;
+  border-radius: 5px;
+  align-self: flex-start;
+  justify-content: center;
+  border-radius: 13px;
+}
+
+.section_three {
+  background: darkkhaki;
+  border-radius: 13px;
+  margin-right: 5px
+}
+
+.section_four{
+  background: darkkhaki;
+  border-radius: 13px;
+  margin-right: 5px;
+}
+
+.section_five {
+  align-self: flex-end;
+  height: 100%;
+  background: darkkhaki;
+  border-radius: 3%;
+  margin-right: 5px;
+  padding: 0%;
+}
+
+.section_six {
+  background: darkkhaki;
+  border-radius: 13px;
+  margin-right: 5px;
+}
 
 .App-header {
   background-color: #282c34;
@@ -15,9 +77,4 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
 

@@ -1,181 +1,211 @@
-import React, { Component } from 'react';
-import TicketList from './Tiket/Teket'
-import MyNumbers from './Tiket/MyNumber'
-import AllTickets from './Tiket/AllTickets'
-import SpinBallsButton from './Tiket/SpinBallsButton'
-import './App.css';
+import React, { Component } from "react";
+import TicketList from "./Component/Ticket/Tiket";
+import MyNumbers from "./Component/MyNumber/MyNumber";
+import AllTickets from "./Component/AllTickets/AllTickets";
+import SpinBallsButton from "./Component/Buttons/SpinBallsButton";
+import AllLottoNumbers from "./Component/AllLotoNumbers/AllLotoNumbers";
+import ResetButton from "./Component/Buttons/ResetButton";
+
+import "./App.css";
 
 class App extends Component {
-  constructor(){
-    super()
-   this. state = {
+  constructor() {
+    super();
+    this.state = {
       ticketNumbers: [],
       ticketArray: [],
       lottoNumbers: [],
+      singleNumber: 0,
       numberIndex: null,
       switchBackgroundColor: true,
       showDeleteButton: false,
       matchCounterStatus: false,
-      matchCounter: 0
+      isNumberGeneratingFinished: true,
+      matchCounter: 0,
+      intervalId: null
     };
   }
 
-  // componentDidUpdate(prevState){
-  //   if(this.state.lottoNumbers.length!==prevState.lottoNumbers ){
-  //     console.log(this.state)
-  //     console.log(prevState)
-
-  //   }
-  // }
-  
-
-  collectTicketNumbers = (event) => {
-    const addingNumber = parseInt(event.target.textContent)
-    let ticketNumbers = [...this.state.ticketNumbers]
-    if (this.state.ticketNumbers.length < 5 && ticketNumbers.indexOf(addingNumber) === -1) {
-      this.setState({
-        ticketNumbers: [...ticketNumbers, addingNumber],
-        switchBackgroundColor: !this.state.switchBackgroundColor,
-      })
-    }
-  };
-
-  showDeleteButton = () => {
-    this.setState({
-      showDeleteButton: !this.state.showDeleteButton,
-    })
-  };
-
-  deleteNumber = (event) => {
-    let ticketNumbers = [...this.state.ticketNumbers]
-    let indexNumber = ticketNumbers.indexOf(parseFloat(event.target.value))
-    ticketNumbers.map((element) => {
-      if (element === parseFloat(event.target.value)) {
-        ticketNumbers.splice(indexNumber, 1)
+  collectTicketNumbers = event => {
+    const addingNumber = parseInt(event.target.textContent);
+    const ticketNumbers = [...this.state.ticketNumbers];
+    if (this.state.ticketArray.length <= 4) {
+      if (
+        ticketNumbers.length <= 4 &&
+        ticketNumbers.indexOf(addingNumber) === -1
+      ) {
         this.setState({
-          ticketNumbers: ticketNumbers
-        })
+          ticketNumbers: [...ticketNumbers, addingNumber],
+          switchBackgroundColor: !this.state.switchBackgroundColor
+        });
       }
     }
-    )
   };
+
+  showDeleteButton = event => {
+    this.setState({
+      showDeleteButton: !this.state.showDeleteButton,
+      singleNumber: parseInt(event.target.textContent)
+    });
+  };
+
+  deleteNumber = event => {
+    let ticketNumbers = [...this.state.ticketNumbers];
+    let indexNumber = parseInt(event.target.value);
+    const fliteredTicketNumbers = ticketNumbers.filter(
+      element => element !== indexNumber
+    );
+    this.setState({
+      ticketNumbers: fliteredTicketNumbers,
+      showDeleteButton: !this.state.showDeleteButton
+    });
+  };
+
   collectTicket = () => {
-    let singleTicket = [...this.state.ticketNumbers]
-    let ticketArray = [...this.state.ticketArray]
+    let singleTicket = [...this.state.ticketNumbers];
+    let ticketArray = [...this.state.ticketArray];
     this.setState({
       ticketArray: [...ticketArray, singleTicket],
       ticketNumbers: []
-    })
+    });
   };
 
-  // lottoBallNumbers = () => {
+  randomLottoNumbers = () => {
+    const lottoNumbers = [...this.state.lottoNumbers];
 
-  //   const spinBalls = () => {
-  //     let randomNumber = Math.floor(Math.random() * 30) + 1;
-  //     if (
-  //       this.state.lottoNumbers.indexOf(randomNumber) === -1
-  //     ) {
-  //       this.setState({ lottoNumbers: [...this.state.lottoNumbers, randomNumber] })
-  //     }
-  //   };
-  //   let startSpining=setInterval(spinBalls, 1000);
-  //   let lotoNum = this.state.lottoNumbers.length;
-  //   let stopSpinning = () => {
-  //     clearInterval(startSpining)
-  //   };
-  //   if (lotoNum <= 12) {
-  //     spinBalls()
-  //   } else {
-  //     stopSpinning()
-  //   }
-  // };
-
-  ranodmLottoNumbers = () => {
-    const lottoNumbers = [...this.state.lottoNumbers]
-    const ticketArray = [...this.state.ticketArray]
-    const chosenOne = [];
-    let randomNumber = null;
-    let result=0;
-
-    for (let i = 1; i <= 10; i++) {
-      randomNumber = Math.floor(Math.random() * 10) + 1;
-      if (chosenOne.indexOf(randomNumber) === -1) {
-        chosenOne.push(randomNumber)
-        this.setState({
-          lottoNumbers: chosenOne
-        })
+    const generateNumber = () => {
+      const newNumber = Math.floor(Math.random() * 30) + 1;
+      if (!lottoNumbers.includes(newNumber)) {
+        lottoNumbers.push(newNumber);
       }
-    }
-    ticketArray.map((element) => {
-      element.map((el) => {
-        if(chosenOne.includes(el)){
-          result++
-          this.setState({
-            matchCounter:result
-          })
-          console.log("IMA BROJ "+ el)
-         
-        }else{
-          result=0;
-          console.log('NEMA BROJ' + el)
-        }  
-      })
-    })
+      return lottoNumbers;
+    };
+    const intervalId = setInterval(
+      () =>
+        this.setState(() => {
+          return { lottoNumbers: generateNumber() };
+        }),
+      2000
+    );
+    return intervalId;
   };
-
-
 
   startLotto = () => {
-    this.ranodmLottoNumbers()
-
+    if (this.state.lottoNumbers.length === 0) {
+      const intervalId = this.randomLottoNumbers();
+      this.setState({
+        intervalId,
+        isNumberGeneratingFinished: false
+      });
+    }
   };
 
+  resetGame = () => {
+    this.setState({
+      ticketNumbers: [],
+      ticketArray: [],
+      lottoNumbers: [],
+      singleNumber: 0,
+      numberIndex: null,
+      switchBackgroundColor: true,
+      showDeleteButton: false,
+      matchCounterStatus: false,
+      isNumberGeneratingFinished: true,
+      matchCounter: 0,
+      intervalId: null
+    });
+  };
 
-
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.lottoNumbers.length === 12) {
+      clearInterval(this.state.intervalId);
+    }
+    if (
+      prevState.isNumberGeneratingFinished !==
+      this.state.isNumberGeneratingFinished
+    ) {
+      this.setState({ isNumberGeneratingFinished: true });
+    }
+  }
 
   render() {
-    console.log(`Loto brojevi: ${this.state.lottoNumbers}`)
-    // console.log(this.state.ticketArray)
-    console.log(this.state.matchCounter)
-    console.log(this.state.lottoNumbers.length)
-    // console.log(this.state.ticketNumbers)
-    let myNumbers = null;
-    let addTicketButton = null;
-    let allTickets = null;
-    let spinBallsButton = null;
-
-    if (this.state.ticketNumbers.length > 0) {
-      myNumbers = (<><MyNumbers showButton={this.showDeleteButton} numbers={this.state.ticketNumbers} buttonStatus={this.state.showDeleteButton} deleteNumber={this.deleteNumber} />
-      </>)
-    };
-
-    if (this.state.ticketNumbers.length > 0) {
-      addTicketButton = (<div className='ticket_button'>
-        <button onClick={this.collectTicket}>Dodaj Tiket</button>
-      </div>)
-    };
-    if (this.state.ticketArray.length > 0) {
-      allTickets = (<AllTickets numbers={this.state.ticketArray} />)
-    };
-
-    if (this.state.ticketArray.length > 1) {
-      spinBallsButton = (<SpinBallsButton spin={this.startLotto} />
-
-      )
-
-    }
-
-
+    const {
+      ticketNumbers,
+      showDeleteButton,
+      singleNumber,
+      ticketArray,
+      lottoNumbers,
+      isNumberGeneratingFinished
+    } = this.state;
     return (
-      <div className="App" key={Math.random()}>
-        <h1>Dobar dan okusajte vasu srecu
-        </h1>
-        <TicketList click={this.collectTicketNumbers} switchBackground={this.state.switchBackgroundColor} />
-        {addTicketButton}
-        {myNumbers}
-        {allTickets}
-        {spinBallsButton}
-      </div>
+      <>
+        <h3 className="title"> Dobar dan okušajte vašu sreću </h3>
+        <div className="App" key={Math.random()}>
+          <div className="section_five">
+            <TicketList
+              ticketNumbers={ticketNumbers}
+              click={this.collectTicketNumbers}
+              switchBackground={singleNumber}
+              controlLength={ticketArray}
+            />{" "}
+          </div>
+
+        
+
+          <div className="section_three">
+            {" "}
+            {ticketNumbers.length && ticketNumbers.length <= 5 ? (
+              <MyNumbers
+                showButton={this.showDeleteButton}
+                numbers={ticketNumbers}
+                singleNumber={singleNumber}
+                deleteNumber={this.deleteNumber}
+                buttonStatus={showDeleteButton}
+              />
+            ) : null}{" "}
+          </div>
+
+          <div className="section_four">
+            {" "}
+            {ticketNumbers.length && ticketNumbers.length <= 5 ? (
+              <div className="ticket_button">
+                {" "}
+                <button
+                  className="add_ticket_button"
+                  onClick={this.collectTicket}
+                >
+                  {" "}
+                  Dodaj Tiket{" "}
+                </button>{" "}
+              </div>
+            ) : null}
+            {ticketArray.length &&
+            ticketArray.length === 5 &&
+            lottoNumbers.length < 12 ? (
+              <SpinBallsButton spin={this.startLotto} />
+            ) : null}
+            {lottoNumbers.length === 12 ? (
+              <ResetButton reset={this.resetGame} />
+            ) : null}
+          </div>
+
+      
+
+          <div className="section_six">
+            {" "}
+            {ticketArray.length ? (
+              <AllTickets
+                ticketNumbers={ticketArray}
+                lottoNumbers={lottoNumbers}
+                isNumberGeneratingFinished={isNumberGeneratingFinished}
+              />
+            ) : null}{" "}
+          </div>
+          <div className="section_two">
+            <AllLottoNumbers lottoNumbers={lottoNumbers} />
+          </div>
+        </div>
+      </>
     );
   }
 }
