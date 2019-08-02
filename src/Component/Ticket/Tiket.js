@@ -19,7 +19,6 @@ const TicketList = ({ click, ticketNumbers }) => {
             <div className='ticket_title'>
                 <h3>Loto </h3>
             </div>
-
             <div className='numbers'>
                 {renderTicketNumbers()}
             </div>
@@ -27,9 +26,9 @@ const TicketList = ({ click, ticketNumbers }) => {
                 <h4>Odaberi od 1 do 5 brojeva</h4>
                 <span className='ticket_info'> Neophodno je 5 tiketa</span>
             </footer>
-
         </div>
 
     )
-}
+};
+
 export default TicketList

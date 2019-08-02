@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Button = ({arrayNumber,singleNumber,deleteNumber,buttonStatus,showButton}) => {
+    
     const checkNumber=()=>{
         if(arrayNumber===singleNumber){
             return buttonStatus

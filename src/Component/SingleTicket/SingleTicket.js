@@ -30,4 +30,5 @@ const SingleTicket = ({ arrayOfLottoNumbers, lottoNumbers, isNumberGeneratingFin
     </div>
     )
 };
+
 export default SingleTicket

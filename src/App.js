@@ -15,7 +15,7 @@ class App extends Component {
       ticketNumbers: [],
       ticketArray: [],
       lottoNumbers: [],
-      singleNumber: 0,
+      singleNumber: null,
       numberIndex: null,
       switchBackgroundColor: true,
       showDeleteButton: false,
@@ -52,11 +52,11 @@ class App extends Component {
   deleteNumber = event => {
     let ticketNumbers = [...this.state.ticketNumbers];
     let indexNumber = parseInt(event.target.value);
-    const fliteredTicketNumbers = ticketNumbers.filter(
+    const filteredTicketNumbers = ticketNumbers.filter(
       element => element !== indexNumber
     );
     this.setState({
-      ticketNumbers: fliteredTicketNumbers,
+      ticketNumbers: filteredTicketNumbers,
       showDeleteButton: !this.state.showDeleteButton
     });
   };
@@ -80,6 +80,7 @@ class App extends Component {
       }
       return lottoNumbers;
     };
+
     const intervalId = setInterval(
       () =>
         this.setState(() => {
@@ -117,6 +118,7 @@ class App extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
+
     if (this.state.lottoNumbers.length === 12) {
       clearInterval(this.state.intervalId);
     }
@@ -129,6 +131,7 @@ class App extends Component {
   }
 
   render() {
+
     const {
       ticketNumbers,
       showDeleteButton,
@@ -137,6 +140,7 @@ class App extends Component {
       lottoNumbers,
       isNumberGeneratingFinished
     } = this.state;
+
     return (
       <>
         <h3 className="title"> Dobar dan okušajte vašu sreću </h3>
@@ -150,7 +154,7 @@ class App extends Component {
             />{" "}
           </div>
 
-        
+
 
           <div className="section_three">
             {" "}
@@ -180,16 +184,16 @@ class App extends Component {
               </div>
             ) : null}
             {ticketArray.length &&
-            ticketArray.length === 5 &&
-            lottoNumbers.length < 12 ? (
-              <SpinBallsButton spin={this.startLotto} />
-            ) : null}
+              ticketArray.length === 5 &&
+              lottoNumbers.length < 12 ? (
+                <SpinBallsButton spin={this.startLotto} />
+              ) : null}
             {lottoNumbers.length === 12 ? (
               <ResetButton reset={this.resetGame} />
             ) : null}
           </div>
 
-      
+
 
           <div className="section_six">
             {" "}
@@ -208,6 +212,6 @@ class App extends Component {
       </>
     );
   }
-}
+};
 
 export default App;
