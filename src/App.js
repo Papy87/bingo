@@ -146,7 +146,7 @@ class App extends Component {
 
     return (
       <>
-        <h3 className="title"> Dobar dan okušajte vašu sreću </h3>
+        <h3 className="title"> Dobar dan,g okušajte vašu sreću </h3>
         <div className="App" key={Math.random()}>
           <div className="section_five">
             <TicketList
