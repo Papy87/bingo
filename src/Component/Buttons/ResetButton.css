@@ -1,0 +1,8 @@
+.reset_button {
+    color: white;
+    background:brown;
+    margin-top:250%;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+  }

@@ -1,0 +1,10 @@
+.all_lotto_numbers{
+    background: white;
+    border-radius: 13px;
+    box-shadow: 8px 8px brown;
+}
+.all_lotto_numbers h4{
+    color:darkkhaki;
+    font-style: italic;
+    font-weight: bold;
+}

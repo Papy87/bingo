@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './SingleTicket.css'
+
 const SingleTicket = ({ arrayOfLottoNumbers, lottoNumbers, isNumberGeneratingFinished }) => {
     let checkNumberList = [];
     let messageCondition = false;

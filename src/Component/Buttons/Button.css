@@ -1,0 +1,27 @@
+
+.add_ticket_button {
+    color: white;
+    background:brown;
+    font-style: italic;
+    margin-top: 250%;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
+  }
+
+.delete_my_number_button {
+    display: none;
+}
+
+.show_delete_my_number_button {
+    display: inline;
+    border: brown;
+    cursor: pointer;
+    color: brown;
+    border-radius: 50%;
+    background: beige;
+    font-size: 10px;
+    width: 15px;
+    height: 15px;
+}

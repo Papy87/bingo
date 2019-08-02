@@ -1,6 +1,7 @@
 import React from 'react'
 import SingleLottoNumber from './SingleLottoNumber'
 
+import './AllLottoNumbers.css'
 const AllLottoNumbers=({lottoNumbers})=>{
     
     return (

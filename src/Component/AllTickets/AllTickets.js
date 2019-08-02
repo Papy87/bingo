@@ -1,6 +1,8 @@
 import React from 'react'
 import SingleTicket from '../SingleTicket/SingleTicket'
 
+import './AllTickets.css'
+
 const AllTickets = ({ ticketNumbers, lottoNumbers, isNumberGeneratingFinished }) => {
 
     return (<div className="all_tickets" >

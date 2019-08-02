@@ -1,5 +1,8 @@
 import React from 'react'
 
+import './SpinBallsButton.css'
+
+
 const SpinBallsButton=(props)=>{
     
     return(

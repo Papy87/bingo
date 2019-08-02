@@ -1,0 +1,15 @@
+.all_tickets {
+    display: flex;
+    background: beige;
+    border-radius: 5%;
+    flex-direction: column;
+    box-shadow: 8px 8px brown;
+    width: 108%
+  }
+  
+
+
+.all_tickets_title{
+    font-style: italic;
+    color: darkkhaki;
+}

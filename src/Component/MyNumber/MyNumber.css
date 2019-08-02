@@ -1,0 +1,19 @@
+
+.my_number_list h5{
+    color: white;
+    font-style: italic;
+}
+.my_ticket_number {
+    width: 40px;
+    height: 40px;
+    border: 2px solid darkkhaki;
+    background: brown;
+    font-weight: bold;
+    color: white;
+    border-radius: 50%;
+    padding: 6px;
+    margin: auto;
+    display: inline-block;
+    cursor: pointer;
+}
+

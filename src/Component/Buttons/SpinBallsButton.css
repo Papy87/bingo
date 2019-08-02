@@ -1,0 +1,10 @@
+.spin_balls_button {
+    color: white;
+    background: brown;
+    font-style: italic;
+    margin-top: 250%;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
+  }

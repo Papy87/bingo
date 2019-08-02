@@ -1,5 +1,7 @@
 import React from 'react'
 
+import './Button.css'
+
 const Button = ({arrayNumber,singleNumber,deleteNumber,buttonStatus,showButton}) => {
     
     const checkNumber=()=>{
@@ -10,7 +12,7 @@ const Button = ({arrayNumber,singleNumber,deleteNumber,buttonStatus,showButton})
     
     return (
         <>             
-         <button onClick={showButton} value={singleNumber} className={checkNumber()?'show_delte_my_number_button':'delete_my_number_button ' }  onClick={deleteNumber} >X</button>
+         <button onClick={showButton} value={singleNumber} className={checkNumber()?'show_delete_my_number_button':'delete_my_number_button ' }  onClick={deleteNumber} >X</button>
         </>
     )
 };

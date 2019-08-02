@@ -1,6 +1,8 @@
 import React from 'react'
 import MySingleNumber from '../MySingleNumber/MySingleNumber'
 
+import './MyNumber.css'
+
 const MyNumbers = ({ showButton, numbers, singleNumber, deleteNumber, buttonStatus }) => {
 
     return (

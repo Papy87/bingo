@@ -1,0 +1,49 @@
+.my_ticket_numbers {
+    
+    width: 40px;
+    height: 40px;
+    border: 2px solid darkkhaki;
+    background: brown;
+    font-weight: bold;
+    color: white;
+    border-radius: 50%;
+    padding: 6px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.my_ticket_list {
+    border-bottom: 1px solid darkkhaki;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0;
+    border-left: none;
+    border-right: none;
+    border-radius: 5px;
+    margin-bottom: 5px;
+  }
+  
+.my_ticket_list_green {
+    border: 2px solid green;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.span_message {
+    display: none;
+}
+
+.span_message_winner {
+    display: inline;
+    font-weight: bold;
+    font-style: italic;
+    color: green;
+}
+
+.span_message_loser {
+    display: inline;
+    font-weight: bold;
+    font-style: italic;
+    color: red;
+}
