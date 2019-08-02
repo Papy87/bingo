@@ -121,6 +121,7 @@ class App extends Component {
 
     if (this.state.lottoNumbers.length === 12) {
       clearInterval(this.state.intervalId);
+    
     }
     if (
       prevState.isNumberGeneratingFinished !==
@@ -128,6 +129,8 @@ class App extends Component {
     ) {
       this.setState({ isNumberGeneratingFinished: true });
     }
+    
+
   }
 
   render() {

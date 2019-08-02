@@ -3,7 +3,7 @@ import React from 'react';
 import './SingleTicket.css'
 
 const SingleTicket = ({ arrayOfLottoNumbers, lottoNumbers, isNumberGeneratingFinished }) => {
-    let checkNumberList = [];
+    let checkNumberList=[];
     let messageCondition = false;
 
     const checkStatus = () => {
@@ -26,7 +26,7 @@ const SingleTicket = ({ arrayOfLottoNumbers, lottoNumbers, isNumberGeneratingFin
     const renderLottoNumbers = () => arrayOfLottoNumbers.map((n) => <div className='my_ticket_numbers'
         key={n} > {n} </div>);
 
-    return (<div className={checkNumbers() ? 'my_ticket_list_green' : 'my_ticket_list'} >
+    return (<div className={checkNumbers() ? 'my_ticket_list_green' : ( messageCondition ? 'my_ticket_list_red':'my_ticket_list' )} >
         {renderLottoNumbers()}
         <span className={messageCondition ? (checkNumbers() ? 'span_message_winner' : 'span_message_loser') : 'span_message'} > {checkNumbers() ? 'Winner !!!' : 'Looser'} </span>
     </div>
